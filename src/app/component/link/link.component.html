@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ng-container *ngIf="authService.userData as user">
+  <ion-toolbar>
+      <ion-icon class="ion-padding-start" slot="start" name="link-sharp"></ion-icon>
+      <ion-label slot="start">Hoi {{user.displayName}} - Dashboard</ion-label>
+      <ion-title slot="start">
+        Hoi {{user.displayName}} - Dashboard Title
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-avatar slot="end">
+          <img src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+        </ion-avatar>
+        <ion-button (click)="authService.SignOut()">logout</ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ng-container>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-text-center">
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed" (click)="add()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-no-padding" *ngFor="let folder of folderLinks | keyvalue">
+        <ion-card class="ion-text-center">
+          <ion-list-header>
+            <h4>{{folder.key}}</h4>
+          </ion-list-header>
+
+          <ion-list>
+            <!-- Sliding item with icon bottom options on end side -->
+            <ion-item-sliding *ngFor="let link of folder.value">
+              <ion-item [color]="link.color">
+                <!-- <ion-icon name="play-outline"></ion-icon> -->
+                <ion-icon (click)="openLink(link)" slot="start" name="arrow-forward-outline"></ion-icon>
+                <ion-label (click)="openLink(link)" *ngIf="link.description" position="stacked">{{link.description}}
+                </ion-label>
+                <ion-label (click)="openLink(link)">
+                  {{link.name}}
+                </ion-label>
+              </ion-item>
+              <ion-item-options>
+                <ion-item-option color="primary" (click)="editPopover(link)">
+                  <ion-icon name="create-sharp"></ion-icon>
+                  <!-- Edit -->
+                </ion-item-option>
+                <ion-item-option color="danger" (click)="delete(link)">
+                  <ion-icon name="trash-sharp"></ion-icon>
+                  <!-- Delete -->
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

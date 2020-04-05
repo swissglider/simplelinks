@@ -1,0 +1,54 @@
+<p>
+  <ion-card>
+    <ion-card-header>
+      <!-- <ion-card-subtitle>Add New Link</ion-card-subtitle> -->
+      <ion-card-title>Add New Link</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="update()">
+        <ion-item>
+          <ion-label position="stacked">Link Name *</ion-label>
+          <ion-input required type="text" [(ngModel)]="link.name" name="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Link URL *</ion-label>
+          <ion-input required type="url" [(ngModel)]="link.link" name="url"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Link Target</ion-label>
+          <ion-select [(ngModel)]="link.target" interface="popover" name="target">
+            <ion-select-option value="_blank">_blank</ion-select-option>
+            <ion-select-option value="_self">_self</ion-select-option>
+            <ion-select-option value="_parent">_parent</ion-select-option>
+            <ion-select-option value="_top">_top</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Link Folder</ion-label>
+          <ion-input type="text" [(ngModel)]="link.folder" name="folder"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Link Description</ion-label>
+          <ion-input type="text" [(ngModel)]="link.description" name="description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Link Color</ion-label>
+          <ion-select [(ngModel)]="link.color" interface="popover" name="color">
+            <ion-select-option value="">no color</ion-select-option>
+            <ion-select-option value="primary">Primary</ion-select-option>
+            <ion-select-option value="secondary">Secondary</ion-select-option>
+            <ion-select-option value="tertiary">Tertiary</ion-select-option>
+            <ion-select-option value="success">Success</ion-select-option>
+            <ion-select-option value="warning">Warning</ion-select-option>
+            <ion-select-option value="danger">Danger</ion-select-option>
+            <ion-select-option value="light">Light</ion-select-option>
+            <ion-select-option value="medium">Medium</ion-select-option>
+            <ion-select-option value="dark">Dark</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button type="submit">Save Changes</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</p>

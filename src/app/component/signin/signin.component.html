@@ -1,0 +1,29 @@
+<!-- Top navigation -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-label slot="start">Login</ion-label>
+    <ion-title slot="start">
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-text-center">
+
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-card class="ion-text-center">
+          <ion-list-header>
+            <h4>Sign in</h4>
+          </ion-list-header>
+
+          <ion-list>
+            <ion-button (click)="authService.GoogleAuth()">Continue with Google</ion-button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+

@@ -1,0 +1,7 @@
+{
+  "name": "simplelinks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
