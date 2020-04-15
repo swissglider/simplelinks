@@ -36,7 +36,7 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Link Target</ion-label>
-          <ion-select [(ngModel)]="link.target" interface="popover" name="target">
+          <ion-select [(ngModel)]="link.target" name="target">
             <ion-select-option value="_blank">_blank</ion-select-option>
             <ion-select-option value="_self">_self</ion-select-option>
             <ion-select-option value="_parent">_parent</ion-select-option>
@@ -45,7 +45,10 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Link Folder</ion-label>
-          <ion-input type="text" [(ngModel)]="link.folder" name="folder"></ion-input>
+          <ion-select [value]="selectedFolder" [(ngModel)]="link.folder" name="folder" (ionChange)="folderChanged($event)">
+            <ion-select-option value="new">"New Folder"</ion-select-option>
+            <ion-select-option *ngFor="let folder of this.folders" [value]="folder">{{ folder }}</ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Link Description</ion-label>
@@ -53,8 +56,8 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Link Color</ion-label>
-          <ion-select [(ngModel)]="link.color" interface="popover" name="color">
-            <ion-select-option value="">no color</ion-select-option>
+          <ion-select [(ngModel)]="link.color" name="color">
+            <ion-select-option value="">"no color"</ion-select-option>
             <ion-select-option value="primary">Primary</ion-select-option>
             <ion-select-option value="secondary">Secondary</ion-select-option>
             <ion-select-option value="tertiary">Tertiary</ion-select-option>

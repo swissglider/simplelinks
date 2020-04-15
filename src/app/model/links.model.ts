@@ -6,4 +6,5 @@ export class Link {
     folder?: string;
     description?: string;
     color?: string;
+    owner: string;
 }
